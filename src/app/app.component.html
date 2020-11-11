@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">{{ title }}</h1>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-4">
+      <input
+        type="file"
+        #file
+        accept="image/*"
+        multiple
+        (change)="preview(file.files)"
+      />
+    </div>
+    <div class="col-2">
+      <button
+        type="button"
+        class="btn btn-primary btn-block"
+        (click)="images = []"
+      >
+        Clear Images
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div
+    class="row align-items-center justify-content-center"
+    *ngIf="images.length > 0"
+  >
+    <div class="col-2">
+      <button type="button" class="btn btn-primary btn-block" (click)="back()">
+        Backward
+      </button>
+    </div>
+    <div class="col-6">
+      <img
+        *ngIf="imagePath"
+        [src]="imagePath"
+        class="image_layout"
+        [alt]="selectedIndex"
+      />
+    </div>
+    <div class="col-2">
+      <button
+        type="button"
+        class="btn btn-primary btn-block"
+        (click)="forward()"
+      >
+        Forward
+      </button>
+    </div>
+  </div>
+</div>
